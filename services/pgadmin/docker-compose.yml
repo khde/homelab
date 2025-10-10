@@ -11,6 +11,12 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     volumes:
       - pgadmin_data:/var/lib/pgadmin
+    networks:
+      homelab-network:
+
+networks:
+  homelab-network:
+    external: true
 
 volumes:
   pgadmin_data:

@@ -11,6 +11,12 @@ services:
       POSTGRES_PASSWORD: admin
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      homelab-network:
+
+networks:
+  homelab-network:
+    external: true
 
 volumes:
   postgres_data:
