@@ -7,7 +7,7 @@ services:
     ports:
       - 8001:80
     volumes:
-      - nextcloud:/var/www/html
+      - nextcloud_data:/var/www/html
     networks:
       homelab-network:
 
@@ -16,4 +16,4 @@ networks:
     external: true
 
 volumes:
-  nextcloud:
+  nextcloud_data:
