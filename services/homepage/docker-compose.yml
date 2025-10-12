@@ -4,13 +4,15 @@ services:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: localhost:8008
+      HOMEPAGE_ALLOWED_HOSTS: startpage.homelab.local
       PUID: 1000
       PGID: 1000
     ports:
       - "8008:3000"
     volumes:
       - homepage_data:/app/config
+    networks:
+      homelab-network:
 
 networks:
   homelab-network:
