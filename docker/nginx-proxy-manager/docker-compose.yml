@@ -1,15 +1,20 @@
 
 services:
   nginx-proxy:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: jc21/nginx-proxy-manager:2.13.7
     restart: unless-stopped
     ports:
       - '80:80'
       - '443:443'
       - '81:81'
     environment:
-      INITIAL_ADMIN_EMAIL: admin@test.com
-      INITIAL_ADMIN_PASSWORD: admin
+      INITIAL_ADMIN_EMAIL: ${NPM_ADMIN_EMAIL}
+      INITIAL_ADMIN_PASSWORD: ${NPM_ADMIN_PASSWORD}
+      DB_POSTGRES_HOST: ${POSTGRES_HOST}
+      DB_POSTGRES_PORT: ${POSTGRES_PORT}
+      DB_POSTGRES_NAME: ${POSTGRES_DB}
+      DB_POSTGRES_USER: ${POSTGRES_USER}
+      DB_POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PUID: 1000
       PGID: 1000
     volumes:
@@ -25,3 +30,4 @@ networks:
 volumes:
   npm-data:
   npm-ssl:
+
