@@ -2,7 +2,9 @@
 services:
   nginx-proxy:
     image: jc21/nginx-proxy-manager:2.14.0
-    restart: unless-stopped
+    restart: unless-stopped 
+    env_file:
+      - ../../.env
     ports:
       - '80:80'
       - '443:443'
@@ -12,9 +14,9 @@ services:
       INITIAL_ADMIN_PASSWORD: ${NPM_ADMIN_PASSWORD}
       DB_POSTGRES_HOST: ${POSTGRES_HOST}
       DB_POSTGRES_PORT: ${POSTGRES_PORT}
-      DB_POSTGRES_NAME: ${POSTGRES_DB}
-      DB_POSTGRES_USER: ${POSTGRES_USER}
-      DB_POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_POSTGRES_NAME: ${NPM_DB_NAME}
+      DB_POSTGRES_USER: ${NPM_DB_USER}
+      DB_POSTGRES_PASSWORD: ${NPM_DB_PASSWORD}
       PUID: 1000
       PGID: 1000
     volumes:

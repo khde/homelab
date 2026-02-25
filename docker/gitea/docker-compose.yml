@@ -3,15 +3,17 @@ services:
   server:
     image: gitea/gitea:1.25
     container_name: gitea
+    restart: unless-stoped
+    env_file:
+      - ../../.env
     environment:
       - USER_UID=1000
       - USER_GID=1000
       - GITEA__database__DB_TYPE=postgres
       - GITEA__database__HOST=${POSTGRES_HOST}:${POSTGRES_PORT}
-      - GITEA__database__NAME=${POSTGRES_DB}
-      - GITEA__database__USER=${POSTGRES_USER}
-      - GITEA__database__PASSWD=${POSTGRES_PASSWORD}
-    restart: no
+      - GITEA__database__NAME=${GITEA_DB_NAME}
+      - GITEA__database__USER=${GITEA_DB_USER}
+      - GITEA__database__PASSWD=${GITEA_DB_PASSWORD}
     volumes:
       - ./gitea-data:/data
       - /etc/timezone:/etc/timezone:ro
