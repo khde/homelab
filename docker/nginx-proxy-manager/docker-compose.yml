@@ -1,7 +1,7 @@
 
 services:
   nginx-proxy:
-    image: jc21/nginx-proxy-manager:2.14
+    image: jc21/nginx-proxy-manager:2.14.0
     restart: unless-stopped
     ports:
       - '80:80'
@@ -18,16 +18,11 @@ services:
       PUID: 1000
       PGID: 1000
     volumes:
-      - npm-data:/data
-      - npm-ssl:/etc/letsencrypt
+      - ./npm-data:/data
+      - ./npm-ssl:/etc/letsencrypt
     networks:
       - homelab-network
 
 networks:
   homelab-network:
     external: true
-
-volumes:
-  npm-data:
-  npm-ssl:
-

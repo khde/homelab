@@ -16,7 +16,7 @@ services:
       NEXTCLOUD_TRUSTED_DOMAINS: ${NEXTCLOUD_TRUSTED_DOMAINS}
       REDIS_HOST: redis
     volumes:
-      - nextcloud_data:/var/www/html
+      - ./nextcloud-data:/var/www/html
     networks:
       homelab-network:
     depends_on:
@@ -27,14 +27,10 @@ services:
     container_name: nextcloud-redis
     restart: unless-stopped
     volumes:
-      - redis_data:/data
+      - ./redis-data:/data
     networks:
       - homelab-network
 
 networks:
   homelab-network:
     external: true
-
-volumes:
-  nextcloud_data:
-  redis_data:

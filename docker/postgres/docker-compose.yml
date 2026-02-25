@@ -10,13 +10,10 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql
     networks:
       homelab-network:
 
 networks:
   homelab-network:
     external: true
-
-volumes:
-  postgres_data:
