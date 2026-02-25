@@ -21,7 +21,7 @@ services:
       PGID: 1000
     volumes:
       - ./npm-data:/data
-      - ./npm-ssl:/etc/letsencrypt
+      - ./npm-ssl-data:/etc/letsencrypt
     networks:
       - homelab-network
 
