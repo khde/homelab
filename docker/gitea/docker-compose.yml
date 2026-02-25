@@ -6,6 +6,11 @@ services:
     environment:
       - USER_UID=1000
       - USER_GID=1000
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=${POSTGRES_HOST}:${POSTGRES_PORT}
+      - GITEA__database__NAME=${POSTGRES_DB}
+      - GITEA__database__USER=${POSTGRES_USER}
+      - GITEA__database__PASSWD=${POSTGRES_PASSWORD}
     restart: no
     volumes:
       - gitea_data:/data
