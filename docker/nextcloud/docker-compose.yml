@@ -4,8 +4,8 @@ services:
     image: nextcloud:32.0.6-apache
     container_name: nextcloud 
     restart: unless-stopped
-    ports:
-      - 8001:80
+    # ports:
+    #   - 8001:80
     environment:
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_DB: ${POSTGRES_DB}
