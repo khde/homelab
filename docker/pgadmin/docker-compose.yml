@@ -4,21 +4,18 @@ services:
     image: dpage/pgadmin4:9.12
     container_name: pgadmin
     restart: unless-stopped
-    # ports:
-    #   - "8888:80"
+    ports:
+      - "8888:80"
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
       PGADMIN_CONFIG_ENABLE_PSQL: "True"
       PGADMIN_CONFIG_ALLOW_SPECIAL_EMAIL_DOMAINS: "['local']"
     volumes:
-      - pgadmin_data:/var/lib/pgadmin
+      - ./pgadmin-data:/var/lib/pgadmin
     networks:
       homelab-network:
 
 networks:
   homelab-network:
     external: true
-
-volumes:
-  pgadmin_data:

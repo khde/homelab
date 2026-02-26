@@ -2,21 +2,28 @@
 services:
   postgres:
     image: postgres:18.2
-    container_name: postgresql
+    container_name: postgres
     restart: unless-stopped
     # ports:
     #   - "5432:5432"
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      NPM_DB_USER: ${NPM_DB_USER}
+      NPM_DB_PASSWORD: ${NPM_DB_PASSWORD}
+      NPM_DB_NAME: ${NPM_DB_NAME}
+      NEXTCLOUD_DB_USER: ${NEXTCLOUD_DB_USER}
+      NEXTCLOUD_DB_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
+      NEXTCLOUD_DB_NAME: ${NEXTCLOUD_DB_NAME}
+      GITEA_DB_USER: ${GITEA_DB_USER}
+      GITEA_DB_PASSWORD: ${GITEA_DB_PASSWORD}
+      GITEA_DB_NAME: ${GITEA_DB_NAME}
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql
+      - ./init.sh:/docker-entrypoint-initdb.d/init.sh
     networks:
       homelab-network:
 
 networks:
   homelab-network:
     external: true
-
-volumes:
-  postgres_data:
