@@ -29,7 +29,7 @@ services:
     volumes:
       - ./redis-data:/data
     networks:
-      - homelab-network
+      homelab-network:
 
 networks:
   homelab-network:
