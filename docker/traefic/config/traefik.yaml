@@ -1,0 +1,31 @@
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+log:
+  filePath: /var/log/traefik/traefik.log
+
+accessLog:
+  filePath: /var/log/traefik/access.log
+
+entryPoints:
+  http:
+    address: ':80'
+  https:
+    address: ':443'
+  traefik:
+    address: ':8080'
+    
+api:
+  insecure: true
+  dashboard: true
+
+ping: {}
+
+providers:
+  docker:
+    exposedByDefault: false
+    watch: true
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
