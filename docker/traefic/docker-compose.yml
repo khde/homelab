@@ -16,7 +16,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.rule=Host(`traefik.khde.lan`)"
       - "traefik.http.routers.traefik.entrypoints=http"
-      - "traefik.http.services.traefik.loadbalancer.server.port=80"
+      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
 
 networks:
   homelab-network:
