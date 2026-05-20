@@ -21,6 +21,11 @@ services:
     # - "222:22"
     networks:
       homelab-network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gitea.rule=Host(`git.khde.lan`)"
+      - "traefik.http.routers.gitea.entrypoints=http"
+      - "traefik.http.services.gitea.loadbalancer.server.port=3000"
 
 networks:
   homelab-network:

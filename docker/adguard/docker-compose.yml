@@ -12,6 +12,11 @@ services:
     volumes:
       - ./adguard-data:/opt/adguardhome/work
       - ./adguard-config:/opt/adguardhome/conf
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adguard.rule=Host(`adguard.khde.lan`)"
+      - "traefik.http.routers.adguard.entrypoints=http"
+      - "traefik.http.services.adguard.loadbalancer.server.port=3000"
     networks:
       - homelab-network
 

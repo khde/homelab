@@ -16,6 +16,11 @@ services:
       KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
     networks:
       - homelab-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.keycloak.rule=Host(`auth.khde.lan`)"
+      - "traefik.http.routers.keycloak.entrypoints=http"
+      - "traefik.http.services.keycloak.loadbalancer.server.port=8080"
 
 networks:
   homelab-network:

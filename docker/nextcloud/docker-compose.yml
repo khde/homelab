@@ -21,6 +21,11 @@ services:
       homelab-network:
     depends_on:
       - redis 
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextcloud.rule=Host(`cloud.khde.lan`)"
+      - "traefik.http.routers.nextcloud.entrypoints=http"
+      - "traefik.http.services.nextcloud.loadbalancer.server.port=80"
 
   redis:
     image: redis:8.6.0-alpine
